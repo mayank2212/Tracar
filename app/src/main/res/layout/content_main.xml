@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    tools:ignore="MissingPrefix"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mayank.tracar.activties.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_above="@+id/bottomlayout"
+            android:layout_height="wrap_content">
+        <fragment
+
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"/>
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageButton"
+                android:src="@drawable/ic_menu_camera"
+                android:background="@drawable/roundcorner"
+                android:padding="1dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginBottom="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" />
+
+
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageButton1"
+
+                android:src="@drawable/ic_menu_camera"
+                android:background="@drawable/roundcorner"
+                android:padding="1dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginStart="39dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/imageButton" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:id="@+id/bottomlayout"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            android:layout_alignParentEnd="true" >
+
+        <TextView
+            android:text="Select device first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fontPath="fonts/arial.ttf"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="15sp"
+            android:id="@+id/current_location"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Select device first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fontPath="fonts/arial.ttf"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/text_color"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:id="@+id/connected"
+            android:layout_below="@+id/current_location"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Select device first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fontPath="fonts/arial.ttf"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="15sp"
+            android:id="@+id/engine_status"
+            tools:ignore="MissingPrefix"
+            android:layout_below="@+id/connected"
+            android:layout_alignParentStart="true" />
+
+
+            <TextView
+                android:text="Select device first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fontPath="fonts/arial.ttf"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text_color"
+                android:textSize="15sp"
+                android:id="@+id/current_speed"
+                android:layout_below="@+id/engine_status"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="MissingPrefix" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    </RelativeLayout>
+

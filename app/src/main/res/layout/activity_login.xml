@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    tools:ignore="MissingPrefix"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="in.gpstracar.gpstracker.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="20dp"
+        android:id="@+id/someid">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="\u00a9www.tracar.in"
+            fontPath="fonts/arial.ttf"
+            android:id="@+id/textView"
+            android:textColor="@color/text_color"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="23dp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Login"
+            fontPath="fonts/arial.ttf"
+            android:textColor="#ffffffff"
+            android:background="@color/colorPrimary"
+            android:layout_below="@+id/checkoutPhoneNumber"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="48dp" />
+
+        <EditText
+            android:id="@+id/checkoutPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:textColor="@color/text_color"
+            android:inputType="textPassword"
+            fontPath="fonts/arial.ttf"
+            android:padding="10dp"
+            android:background="#ffffffff"
+            android:layout_below="@+id/et_username"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp">
+        </EditText>
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="Username"
+            android:textColor="@color/text_color"
+            android:padding="10dp"
+            fontPath="fonts/arial.ttf"
+            android:background="#ffffffff"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="46dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/logo_splash"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/imageView3" />
+
+        <TextView
+            android:text="GPS solutions that ensure safety"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            fontPath="fonts/arial.ttf"
+            android:textColor="@color/text_color"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:id="@+id/textView5" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

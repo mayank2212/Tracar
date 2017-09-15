@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    tools:ignore="MissingPrefix"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/complete_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="4dp"
+    android:layout_marginBottom="2dp"
+    card_view:contentPadding="1dp"
+    android:layout_margin="2dp"
+    card_view:cardBackgroundColor="#fff">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:text="Start Location"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/startLocationTextView"
+        android:layout_height="20dp"
+         />
+
+    <TextView
+        android:text="End Location"
+        android:layout_width="wrap_content"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startLocationTextView"
+        android:layout_alignLeft="@+id/startLocationTextView"
+        android:layout_alignStart="@+id/startLocationTextView"
+        android:layout_marginTop="4dp"
+        android:id="@+id/endLocationTextView" />
+
+    <TextView
+        android:text="Start Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:id="@+id/startTimeTextView"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/endLocationTextView"
+        android:layout_alignLeft="@+id/endLocationTextView"
+        android:layout_alignStart="@+id/endLocationTextView" />
+
+    <TextView
+        android:text="End Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/endTimeTextView"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/startTimeTextView"
+        android:layout_alignLeft="@+id/startTimeTextView"
+        android:layout_alignStart="@+id/startTimeTextView" />
+
+    <TextView
+        android:text="Trip Duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tripDurationTextView"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/endTimeTextView"
+        android:layout_alignLeft="@+id/endTimeTextView"
+        android:layout_alignStart="@+id/endTimeTextView" />
+
+    <TextView
+        android:text="Average Speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avgSpeedTextView"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/tripDurationTextView"
+        android:layout_alignLeft="@+id/tripDurationTextView"
+        android:layout_alignStart="@+id/tripDurationTextView" />
+
+    <TextView
+        android:text="Max Speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:id="@+id/maxSpeedTextView"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/avgSpeedTextView"
+        android:layout_alignLeft="@+id/avgSpeedTextView"
+        android:layout_alignStart="@+id/avgSpeedTextView" />
+
+    <TextView
+        android:text="Distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tripDistanceTextView"
+        fontPath="fonts/arial.ttf"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/maxSpeedTextView"
+        android:layout_alignLeft="@+id/maxSpeedTextView"
+        android:layout_alignStart="@+id/maxSpeedTextView" />
+
+</RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

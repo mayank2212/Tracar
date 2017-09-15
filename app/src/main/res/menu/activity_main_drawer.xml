@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/history"
+            android:title="History" />
+        <item
+            android:id="@+id/over_speed"
+            android:title="Over Speeding" />
+        <item
+            android:id="@+id/summary"
+            android:title="Summary" />
+        <item
+            android:id="@+id/setting"
+            android:title="Setting" />
+        <item
+            android:id="@+id/contact"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/logout"
+            android:title="Logout" />
+
+    </group>
+
+ <!--   <item android:title="Communicate">
+        <menu>
+
+        </menu>
+    </item>
+-->
+</menu>
