@@ -12,9 +12,6 @@
             android:id="@+id/summary"
             android:title="Summary" />
         <item
-            android:id="@+id/setting"
-            android:title="Setting" />
-        <item
             android:id="@+id/contact"
             android:title="Contact Us" />
         <item

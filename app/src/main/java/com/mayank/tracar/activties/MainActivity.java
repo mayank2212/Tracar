@@ -1,6 +1,7 @@
 package com.mayank.tracar.activties;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -24,7 +26,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +46,10 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.github.javiersantos.materialstyleddialogs.enums.Style;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -86,6 +95,9 @@ public class MainActivity extends AppCompatActivity
     ArrayList<String> device_number ;
     RecyclerView sheet_recycleview;
 
+    static String current_engine_status;
+
+    Dialog dialog;
 
      ImageButton imagebutton , imagebutton1;
 
@@ -111,6 +123,35 @@ public class MainActivity extends AppCompatActivity
         imagebutton1 = (ImageButton)findViewById(R.id.imageButton1);
 
         imagebutton.bringToFront(); imagebutton1.bringToFront();
+
+        imagebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!selected_car_name.equalsIgnoreCase("")) {
+                    OpeningGeoFenceDialog();
+
+                } else {
+                    Toast.makeText(MainActivity.this, "Select device first", Toast.LENGTH_LONG).show();
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+                }
+
+            }
+        });
+
+        imagebutton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!selected_car_name.equalsIgnoreCase("")) {
+                    OpeningEngine_Dialog();
+
+                } else {
+                    Toast.makeText(MainActivity.this, "Select device first", Toast.LENGTH_LONG).show();
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+                }
+            }
+        });
 
         bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottomSheetLayout));
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
@@ -533,6 +574,7 @@ public class MainActivity extends AppCompatActivity
             attributes = requiredDeviceData.getString("attributes");
             JSONObject attributesObj = new JSONObject(attributes);
             ignition = attributesObj.getString("ignition");
+            current_engine_status = attributesObj.getString("ignition");
             charge = attributesObj.getString("charge");
             motion = attributesObj.getString("motion");
             ip = attributesObj.getString("ip");
@@ -595,4 +637,103 @@ public class MainActivity extends AppCompatActivity
        }
 
     }
+
+
+
+    private void OpeningGeoFenceDialog(){
+
+
+        EditText setRadiusEditText;
+        Button addGeofenceBtn;
+
+        final SupportPlaceAutocompleteFragment places ;
+      dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.geo_fence_dialog);
+
+
+        setRadiusEditText = (EditText)findViewById(R.id.setRadiusEditText);
+        addGeofenceBtn = (Button)findViewById(R.id.addGeofenceBtn);
+
+         places= (SupportPlaceAutocompleteFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.place_autocomplete_fragment);
+
+        places.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+
+                Toast.makeText(getApplicationContext(), place.getName() + "  " + selected_car_name, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Status status) {
+
+                Toast.makeText(getApplicationContext(), status.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Button submitbutton = (Button) dialog.findViewById(R.id.addGeofenceBtn);
+        submitbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Geo Fence Added..", Toast.LENGTH_LONG).show();
+                FragmentTransaction ft2 = getSupportFragmentManager()
+                        .beginTransaction();
+                ft2.remove(getSupportFragmentManager()
+                        .findFragmentById(R.id.place_autocomplete_fragment));
+                ft2.commit();
+                dialog.dismiss();
+            }
+        });
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dismissbutton1);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft2 = getSupportFragmentManager()
+                        .beginTransaction();
+                ft2.remove( getSupportFragmentManager()
+                        .findFragmentById(R.id.place_autocomplete_fragment));
+                ft2.commit();
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
+
+    private void OpeningEngine_Dialog(){
+        new MaterialStyledDialog.Builder(MainActivity.this)
+                .setTitle("Engine Status")
+                .setDescription("Current engine status: "+current_engine_status  )
+                .setCancelable(true)
+                .setStyle(Style.HEADER_WITH_TITLE)
+                .setHeaderColor(R.color.colorPrimary)
+                .setPositiveText("Engine On")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+
+                       Toast.makeText(MainActivity.this , "Engine On:" + selected_car_name , Toast.LENGTH_LONG).show();
+
+                    }
+                })
+                .setNegativeText("Engine Off")
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                        Toast.makeText(MainActivity.this , "Engine Off:" + selected_car_name , Toast.LENGTH_LONG).show();
+
+                    }
+                })
+                .show();
+
+    }
+
+
 }

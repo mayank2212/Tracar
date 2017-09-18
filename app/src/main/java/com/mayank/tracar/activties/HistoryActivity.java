@@ -1,9 +1,8 @@
 package com.mayank.tracar.activties;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.icu.util.Calendar;
-import android.icu.util.GregorianCalendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,7 +52,7 @@ public class HistoryActivity extends AppCompatActivity {
 
 
     private static final String TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT";
-    @TargetApi(24)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,11 +119,19 @@ public class HistoryActivity extends AppCompatActivity {
             );
         }
         // Init format
-        final SimpleDateFormat myDateFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", java.util.Locale.getDefault());
+        final SimpleDateFormat myDateFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
         // Assign unmodifiable values
-        dateTimeFragment_To.set24HoursMode(true);
+       /* dateTimeFragment_To.set24HoursMode(true);
         dateTimeFragment_To.setMinimumDateTime(new GregorianCalendar(2015, Calendar.JANUARY, 1).getTime());
-        dateTimeFragment_To.setMaximumDateTime(new GregorianCalendar(2025, Calendar.DECEMBER, 31).getTime());
+        dateTimeFragment_To.setMaximumDateTime(new GregorianCalendar(2025, Calendar.DECEMBER, 31).getTime());*/
+
+        dateTimeFragment_To.setDefaultHourOfDay(15);
+        dateTimeFragment_To.setDefaultMinute(20);
+        dateTimeFragment_To.setDefaultDay(4);
+        if (Build.VERSION.SDK_INT >= 24) {
+            dateTimeFragment_To.setDefaultMonth(Calendar.SEPTEMBER);
+        }
+        dateTimeFragment_To.setDefaultYear(2017);
 
         // Define new day and month format
         try {
@@ -176,11 +183,19 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
         // Init format
-        final SimpleDateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", java.util.Locale.getDefault());
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
         // Assign unmodifiable values
-        dateTimeFragment.set24HoursMode(true);
+        /*dateTimeFragment.set24HoursMode(true);
         dateTimeFragment.setMinimumDateTime(new GregorianCalendar(2015, Calendar.JANUARY, 1).getTime());
-        dateTimeFragment.setMaximumDateTime(new GregorianCalendar(2025, Calendar.DECEMBER, 31).getTime());
+        dateTimeFragment.setMaximumDateTime(new GregorianCalendar(2025, Calendar.DECEMBER, 31).getTime());*/
+
+        dateTimeFragment.setDefaultHourOfDay(15);
+          dateTimeFragment.setDefaultMinute(20);
+            dateTimeFragment.setDefaultDay(4);
+        if (Build.VERSION.SDK_INT >= 24) {
+            dateTimeFragment.setDefaultMonth(Calendar.SEPTEMBER);
+        }
+        dateTimeFragment.setDefaultYear(2017);
 
         // Define new day and month format
         try {
@@ -219,19 +234,19 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
 
-    @TargetApi(24)
+
     private void fromDate(){
         dateTimeFragment.startAtCalendarView();
-        dateTimeFragment.setDefaultDateTime(new GregorianCalendar(2017, Calendar.SEPTEMBER, 4, 15, 20).getTime());
+//        dateTimeFragment.setDefaultDateTime(new GregorianCalendar(2017, Calendar.SEPTEMBER, 4, 15, 20).getTime());
         dateTimeFragment.show(getSupportFragmentManager(), TAG_DATETIME_FRAGMENT);
 
     }
 
 
-    @TargetApi(24)
+
     private void ToDate(){
         dateTimeFragment_To.startAtCalendarView();
-        dateTimeFragment_To.setDefaultDateTime(new GregorianCalendar(2017, Calendar.SEPTEMBER, 4, 15, 20).getTime());
+       // dateTimeFragment_To.setDefaultDateTime(new GregorianCalendar(2017, Calendar.SEPTEMBER, 4, 15, 20).getTime());
         dateTimeFragment_To.show(getSupportFragmentManager(), TAG_DATETIME_FRAGMENT);
 
     }

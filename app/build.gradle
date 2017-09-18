@@ -29,11 +29,14 @@ dependencies {
 
     compile 'com.google.android.gms:play-services-location:11.0.4'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
+    compile 'com.google.android.gms:play-services-places:11.0.4'
+
+           //never user all play service it exceeddddd 64k limit
+/*    compile 'com.google.android.gms:play-services:11.0.4'*/
 
     compile 'com.github.javiersantos:MaterialStyledDialogs:2.1'
     compile 'com.android.volley:volley:1.0.0'
 
-    compile 'com.github.javiersantos:MaterialStyledDialogs:2.1'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.github.Kunzisoft:Android-SwitchDateTimePicker:1.8'
 
